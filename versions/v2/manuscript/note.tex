@@ -1,0 +1,268 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,array,booktabs}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\den}{\operatorname{den}}
+\newcommand{\num}{\operatorname{num}}
+\title{Catalan formula corrections and short proofs\\of Groux's and Staunton's conjectures}
+\author{Haobo Ma\\\small ChronoAI Pte Ltd, Singapore
+\and Wenlin Zhang\\\small National University of Singapore\\\small ChronoAI Pte Ltd, Singapore}
+\date{November 13, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Applying Pieter Mostert's finite-sum identity (OEIS A119951,
+October 12, 2012) and the minimal-exponent theorem of Ca\c{c}\~ao,
+Falc\~ao and Malonek (2017, Theorem 6), we give short proofs of
+Groux Roland's denominator conjecture and Alexander Staunton's
+linked exponent conjecture in the FORMULA section of OEIS A120069
+(December 11, 2010 and February 28, 2026, respectively).
+For every positive index, the reduced denominator of the partial sum
+of scaled Catalan numbers equals that of its last summand; we also
+give its binary-digit form. We correct an index in the companion
+numerator entry and a minimum expression in the exponent entry.
+\end{abstract}
+
+\section{The denominator equality}
+Write $C_n=\binom{2n}{n}/(n+1)$ for the Catalan number, and put
+\[
+ q_n=\frac{C_n}{4^{n-1}},\qquad
+ S_n=\sum_{k=1}^n q_k,\qquad a_n=\den(S_n)\quad(n\geq1).
+\]
+Here $\den$ is the positive denominator in lowest terms, with
+$\den(0)=1$. The sequences of numerators and denominators of $S_n$
+are A119951 and A120069 respectively \cite{numerators,groux}.
+The point of Groux's conjecture is that adding all earlier summands
+does not change the reduced denominator of the final one.
+
+\begin{theorem}\label{thm:main}
+For every integer $n\geq1$, $a_n=\den(q_n)$.
+\end{theorem}
+\begin{proof}
+The factorial definition gives
+\[
+ (n+2)C_{n+1}=2(2n+1)C_n.
+\]
+Consequently $(2n+3)q_{n+1}+q_{n+1}=(2n+1)q_n$.
+Starting with $S_1=q_1=1$, induction gives
+\begin{equation}\label{eq:mostert}
+ S_n=4-(2n+1)q_n
+     =4-\frac{\binom{2n+2}{n+1}}{2^{2n-1}}.
+\end{equation}
+This is Mostert's identity, recorded in A119951 on October 12, 2012
+\cite{numerators}; the induction supplies its proof here.
+Write $q_n=u/d$ in lowest terms. Since $d\mid4^{n-1}$, $d$ is a power
+of two, and $\gcd(2n+1,d)=1$. Thus
+\[
+ S_n=\frac{4d-(2n+1)u}{d},\qquad
+ \gcd\bigl(4d-(2n+1)u,d\bigr)=1.
+\]
+Its reduced denominator is therefore exactly $d$, including $d=1$.
+\end{proof}
+
+\section{The linked exponent conjecture}
+Let $b_n=\mathrm{A283208}(n)$ for $n\geq0$. The definition in that
+entry \cite{vietoris} is equivalently
+\begin{equation}\label{eq:bdef}
+ 2^{b_n}=\den\left(\frac{(2n+1)C_n}{4^n}\right).
+\end{equation}
+Indeed, its Vietoris number $c(2n)$ is $\binom{2n}{n}/4^n$,
+and $b_n$ is the least nonnegative exponent making
+$2^{b_n}(2n+1)c(2n)/(n+1)$ integral. This matches the
+minimal-exponent convention, not a shifted sequence index.
+The rational in \eqref{eq:bdef} is $T_0^n$ in
+Ca\c{c}\~ao, Falc\~ao and Malonek \cite[Eq.~(5.6)]{cacao2017}.
+Their Theorem~6 proves its reduced denominator exponent, namely
+\eqref{eq:factorial} below. Together with Mostert's identity this
+already implies both A120069 conjectures. The following proof
+rederives the exponent and gives its binary-digit form.
+
+\begin{corollary}\label{cor:staunton}
+Staunton's conjecture is true: for every $n\geq1$,
+\[
+ a_n=2^{b_n-2}.
+\]
+More explicitly, if $s_2(m)$ denotes the number of ones in the binary
+expansion of $m$, then
+\begin{equation}\label{eq:digits}
+ a_n=2^{\,2n-1-s_2(n+1)},\qquad
+ b_n=2n+1-s_2(n+1).
+\end{equation}
+The displayed formula for $b_n$ also holds at $n=0$.
+\end{corollary}
+\begin{proof}
+Let $v_2(m)$ denote the exponent of two in a positive integer $m$.
+Counting multiples of each power of two in $m!$ gives
+\[
+ v_2(m!)=\sum_{j\geq1}\left\lfloor\frac{m}{2^j}\right\rfloor
+        =m-s_2(m).
+\]
+The second equality follows by writing $m=\sum_i\epsilon_i2^i$:
+the sum of floors is $\sum_i\epsilon_i(2^i-1)$.
+Applying this to $C_n$ yields
+\[
+ v_2(C_n)=s_2(n)-v_2(n+1)=s_2(n+1)-1.
+\]
+For the last equality, adding one to $n$ deletes precisely
+$v_2(n+1)$ trailing ones and inserts one new one.
+For $n=1$, $C_1=1$; for $n\geq2$, the Catalan recurrence and
+$C_2=2<4$ give $0<C_n<4^{n-1}$, since $C_{n+1}/C_n<4$.
+Hence $v_2(C_n)\leq2n-2$ for all $n\geq1$.
+Reduction of $C_n/4^{n-1}$ and of the rational in
+\eqref{eq:bdef} therefore gives, respectively,
+\[
+ a_n=2^{2n-2-v_2(C_n)},\qquad b_n=2n-v_2(C_n).
+\]
+Theorem~\ref{thm:main} and the valuation identity prove all claims.
+At $n=0$, \eqref{eq:bdef} gives $b_0=0$.
+\end{proof}
+
+\paragraph{Other formulas explained by the same valuation.}
+For $n\geq0$ we also obtain the existing A283208 formula,
+recorded by Ca\c{c}\~ao, Malonek, Falc\~ao and Tomaz
+\cite[Section 2, pp.~4 and 7]{cacao2018},
+\begin{equation}\label{eq:factorial}
+ b_n=n+v_2((n+1)!)
+     =n+\sum_{j\geq1}\left\lfloor\frac{n+1}{2^j}\right\rfloor,
+\end{equation}
+and hence $b_{n+1}-b_n=1+v_2(n+2)$.
+This proves both alternating identities recorded by Rog\'erio
+Ser\^odio (February 19, 2019) \cite{vietoris}:
+\[
+ -b_{4n-1}-b_{4n}+b_{4n+1}+b_{4n+2}=6\quad(n\geq1),
+\]
+\[
+ b_{2n+1}-b_{2n+2}-b_{2n+3}+b_{2n+4}=0\quad(n\geq0).
+\]
+In the first, group the differences two indices apart; each is three.
+In the second, the two first differences being subtracted both equal one.
+Similarly, with $m=\lceil(n+2)/4\rceil$,
+\[
+ b_{n+4}-b_n=7+v_2(m)\quad(n\geq0),
+\]
+because the four consecutive integers $n+2,\ldots,n+5$ contain
+one odd pair, one integer of valuation one and the integer $4m$.
+This is Ser\'odio's recurrence $6+\mathrm{A001511}(m)$.
+The alternative minimum expression in A283208, read literally as
+$\min\{k:\lfloor((n+5)/4)\bmod2^k\rfloor=1\}$, needs a correction:
+at $n=3$ its residue is zero for $k=1$ and two for every $k\geq2$,
+so that minimum does not exist. A precise replacement for the
+increment beyond six is
+$\min\{k\geq1:m\bmod2^k>0\}=1+v_2(m)$.
+The empirical bitwise formula attributed to Gary Detlefs (2019)
+and marked true by Andrei Zabolotskii (2021) is also
+\eqref{eq:factorial}: the least set bit of $M=(n+1)!$ equals
+$M-(M\mathbin{\mathrm{AND}}(M-1))=2^{v_2(M)}$.
+These are rederivations of formulas already present in A283208.
+For completeness its displayed generating function follows as well.
+Writing $B(x)=\sum_{n\geq0}b_nx^n$ and using
+$v_2(m)=\sum_{j\geq1}\mathbf{1}_{2^j\mid m}$ in the four-step
+recurrence gives the formal power-series identity
+\[
+ (1-x^4)B(x)=\frac{2x+x^2+3x^3+x^4}{1-x}
+ +\sum_{j\geq0}\frac{\sum_{i=0}^3x^{8\cdot2^j-1+i}}{1-x^{8\cdot2^j}}.
+\]
+Indeed, $b_0,b_1,b_2,b_3=0,2,3,6$ give the initial terms;
+the constant seven in the recurrence gives every coefficient from
+$x^4$ onward in the first fraction. For $r\geq1$, the condition
+$2^r\mid\lceil(n+2)/4\rceil$ contributes blocks at degrees
+$4\cdot2^r\ell-1,\ldots,4\cdot2^r\ell+2$, $\ell\geq1$,
+which give the displayed sum after putting $r=j+1$.
+
+The numerator $U_n=\num(S_n)$ has the companion expression
+\[
+ U_n=4a_n-(2n+1)\frac{C_n}{2^{v_2(C_n)}}.
+\]
+It follows directly from \eqref{eq:mostert}. Substitution of
+\eqref{eq:digits} gives the equivalent factorial expression
+attributed to Detlefs (November 6, 2020) in A119951:
+\[
+ U_n=\left(2^n-\frac{\binom{2n+2}{n+1}}{2^{n+1}}\right)
+       \gcd((n+1)!,2^{n+1}).
+\]
+Here the greatest common divisor is
+$2^{n+1-s_2(n+1)}$, since $v_2((n+1)!)\leq n$.
+
+\paragraph{An indexing correction in A119951.}
+The FORMULA line attributed to Johannes W. Meijer (May 24, 2009)
+uses the numerator of a central-binomial convolution for $a(n-1)$.
+With that entry's offset one, the correct index is $a(n)$.
+To see this, put $H_j=\binom{2j}{j}$. The formal binomial series
+$\sum_{j\geq0}H_jx^j=(1-4x)^{-1/2}$ gives
+$\sum_{j=0}^{n+1}H_jH_{n+1-j}=4^{n+1}$. Removing the two endpoints
+and using \eqref{eq:mostert} proves, for $n\geq1$,
+\[
+ \frac{1}{4^n}\sum_{i=0}^{n-1}H_{i+1}H_{n-i}
+ =4-\frac{2H_{n+1}}{4^n}=S_n.
+\]
+Thus its numerator is $U_n$, not $U_{n-1}$.
+For example, $n=2$ gives $24/16=3/2$, whose numerator is three,
+whereas $U_1=1$. The convolution programs in the same entry
+already produce the correctly indexed sequence.
+
+\section{Coverage and verification}
+\begin{center}\small
+\begin{tabular}{@{}p{.46\linewidth}p{.46\linewidth}@{}}
+\toprule Source statement & Coverage \\ \midrule
+A120069, Groux (2010) & Proved from Mostert's identity (2012), Theorem~\ref{thm:main}. \\
+A119951, Mostert (2012) & Reproved; Mostert (2012), \eqref{eq:mostert}. \\
+A120069, Staunton (2026) & Proved as a consequence of Mostert (2012) and Ca\c{c}\~ao--Falc\~ao--Malonek (2017, Theorem~6), Corollary~\ref{cor:staunton}. \\
+A283208, floor-sum exponent & Reproved; prior proof Ca\c{c}\~ao--Falc\~ao--Malonek (2017, Theorem~6). \\
+A283208, Ser\'odio identities, recurrence and generating function; Detlefs bitwise formula & Rederived above; existing formulas credited. \\
+A283208, minimum-expression version of the recurrence & Refuted-and-corrected by the positive-residue minimum above. \\
+A119951, Detlefs numerator formula (2020) & Rederived above. \\
+A119951, Meijer convolution formula (2009) & Refuted-and-corrected: replace $a(n-1)$ by $a(n)$. \\
+A119951, Eta-triangle connections & Not covered. \\
+\bottomrule
+\end{tabular}
+\end{center}
+The pinned Lean file \cite{lean} contains the declaration
+\begin{center}\small
+\texttt{D5.S3.ArithSums.GrouxA120069Denominator.result}
+\end{center}
+Its statement is Theorem~\ref{thm:main} for natural $n$ with $0<n$.
+Its private helpers \texttt{balance} and \texttt{sum\_formula}
+establish the Catalan recurrence and \eqref{eq:mostert}.
+The valuation formulas, Staunton corollary, numerator formula and
+related recurrences and the convolution correction have the written proofs given above.
+The accompanying \texttt{verify.py} checks the exact rational identities
+for $1\leq n\leq1000$ and the displayed A283208 difference formulas
+over their stated finite test ranges; these checks supplement the proofs.
+
+\begin{thebibliography}{9}
+\bibitem{groux} OEIS Foundation Inc., \emph{A120069},
+revision 30, March 10, 2026. FORMULA: Groux Roland, December 11, 2010;
+Alexander Staunton, February 28, 2026.
+\url{https://oeis.org/A120069}.
+\bibitem{numerators} OEIS Foundation Inc., \emph{A119951},
+revision 32, February 16, 2025. COMMENT: Pieter Mostert,
+October 12, 2012; FORMULA: Gary Detlefs, November 6, 2020.
+\url{https://oeis.org/A119951}.
+\bibitem{vietoris} I. Ca\c{c}\~ao, M. I. Falc\~ao and H. Malonek,
+\emph{A283208}, OEIS, revision 103, August 5, 2026.
+Additional formulas by R. Ser\'odio, G. Detlefs and A. Zabolotskii
+are individually dated in the entry.
+\url{https://oeis.org/A283208}.
+\bibitem{cacao2017} I. Ca\c{c}\~ao, M. I. Falc\~ao and H. R. Malonek,
+\emph{Hypercomplex Polynomials, Vietoris' Rational Numbers and a
+Related Integer Numbers Sequence}, Complex Analysis and Operator Theory
+\textbf{11} (2017), 1059--1076, Theorem~6 and Eq.~(5.6).
+\url{https://doi.org/10.1007/s11785-017-0649-5}.
+\href{https://hdl.handle.net/1822/45794}{Author manuscript}.
+\bibitem{cacao2018} I. Ca\c{c}\~ao, H. R. Malonek, M. I. Falc\~ao
+and G. Tomaz, \emph{Combinatorial Identities Associated with a
+Multidimensional Polynomial Sequence}, Journal of Integer Sequences
+\textbf{21} (2018), Article 18.7.4.
+\url{https://cs.uwaterloo.ca/journals/JIS/VOL21/Falcao/falcao2.pdf}.
+\bibitem{lean} \emph{GrouxA120069Denominator.lean},
+commit \texttt{3378450a2176909e857354ab064dde6ec7679b71}.
+\href{https://github.com/the-omega-institute/trureturing/blob/3378450a2176909e857354ab064dde6ec7679b71/D5/S3/ArithSums/GrouxA120069Denominator.lean}{Pinned Lean source}.
+\end{thebibliography}
+\bigskip\noindent\small
+Copyright \textcopyright\ 2026 Haobo Ma and Wenlin Zhang.
+Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
+\end{document}

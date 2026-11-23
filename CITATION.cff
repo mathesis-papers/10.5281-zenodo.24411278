@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this work, cite it."
+title: "Catalan formula corrections and short proofs of Groux's and Staunton's conjectures"
+authors:
+  - name: "Haobo Ma"
+  - name: "Wenlin Zhang"
+date-released: "2026-11-23"
+version: "2"
+url: "https://mathesis-omega-research.apps.chrono-ai.fun/papers/groux-catalan-denominators?version=2"
+doi: "10.5281/zenodo.24411279"
+license: "CC-BY-4.0"

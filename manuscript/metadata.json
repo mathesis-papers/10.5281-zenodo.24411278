@@ -1,0 +1,15 @@
+{
+  "id": "groux-catalan-denominators",
+  "revision": 2,
+  "problem_ids": ["groux-2010-a120069-catalan-denominators"],
+  "topic": "Groux's Catalan partial-sum denominator conjecture and Staunton's linked exponent formula",
+  "title": "Catalan formula corrections and short proofs of Groux's and Staunton's conjectures",
+  "creators": [
+    {"name": "Ma, Haobo", "affiliation": "ChronoAI Pte Ltd, Singapore"},
+    {"name": "Zhang, Wenlin", "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore"}
+  ],
+  "abstract": "Applying Pieter Mostert's finite-sum identity (OEIS A119951, October 12, 2012) and the minimal-exponent theorem of Cação, Falcão and Malonek (2017, Theorem 6), we give short proofs of Groux Roland's denominator conjecture and Alexander Staunton's linked exponent conjecture in the FORMULA section of OEIS A120069 (December 11, 2010 and February 28, 2026, respectively). For every positive index, the reduced denominator of the partial sum of scaled Catalan numbers equals that of its last summand; we also give its binary-digit form. We correct an index in the companion numerator entry and a minimum expression in the exponent entry.",
+  "summary": "For n >= 1, den(sum(C(k)/4^(k-1), k=1..n)) = den(C(n)/4^(n-1)) = 2^(2n-1-s_2(n+1)) = 2^(A283208(n)-2). The main equality is the statement of the pinned Lean declaration; the exponent and related formulas have written proofs.",
+  "license": "cc-by-4.0",
+  "evidence_url": "https://github.com/the-omega-institute/trureturing/blob/3378450a2176909e857354ab064dde6ec7679b71/D5/S3/ArithSums/GrouxA120069Denominator.lean"
+}

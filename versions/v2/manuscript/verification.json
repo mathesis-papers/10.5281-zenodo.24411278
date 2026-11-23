@@ -1,0 +1,34 @@
+{
+  "status": "pass",
+  "arithmetic": "exact integers and reduced rational numbers",
+  "main_identity_and_denominators": {
+    "first": 1,
+    "last": 1000
+  },
+  "valuation_and_companion_numerator": {
+    "first": 1,
+    "last": 1000
+  },
+  "A283208_first_difference_and_four_step_recurrence": {
+    "first": 0,
+    "last": 1000
+  },
+  "first_Serodio_identity": {
+    "first": 1,
+    "last": 250
+  },
+  "second_Serodio_identity": {
+    "first": 0,
+    "last": 500
+  },
+  "corrected_convolution_identity": {
+    "first": 1,
+    "last": 200
+  },
+  "A283208_generating_function_coefficients": {
+    "first": 0,
+    "last": 1000
+  },
+  "OEIS_numerator_and_denominator_prefix_terms": 10,
+  "universal_coverage": "The note supplies written proofs; the pinned Lean declaration covers the main denominator equality."
+}
